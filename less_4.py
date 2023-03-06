@@ -22,6 +22,12 @@ async def check_out(message: types.Message):
     await message.answer(f'COUNT: {count}')
     count += 1
 
+@dp.message_handler()
+async def check_zero(message: types.Message):
+    if '0' in message.text:
+        await message.reply('YES')
+    else:
+        await message.reply('NO')
 
 @dp.message_handler()
 async def send_random_letter(message: types.Message):
