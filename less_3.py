@@ -5,10 +5,14 @@ bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
 
 
-@dp.message_handler()
-async def echo_upper(message: types.Message):
-    if message.text.count(' ') >= 1:
-        await message.answer(text=message.text.upper())
+@dp.message_handler(commands=['help'])
+async def help_commands(message: types.Message):
+    await message.reply(text='HELP_COMMAND')
+
+@dp.message_handler(commands=['start'])
+async def start_commands(message: types.Message):
+    await message.answer(text='Добро пожаловать в наш телеграм Бот!')
+    await message.delete()
 
 
 if __name__ == '__main__':
